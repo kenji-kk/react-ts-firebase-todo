@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { AuthenPage } from "./components/pages/AuthenPage";
+import { NewPage } from "./components/pages/NewPage";
 
 function App() {
   return (
     <>
-      <AuthenPage />
+      <NewPage />
     </>
   );
 }
