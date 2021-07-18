@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link as RLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
+import { auth } from "../../firebase";
 
 function Copyright() {
   return (
@@ -58,6 +59,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const LoginPage: React.VFC = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const signInEmail = async () => {
+    await auth.signInWithEmailAndPassword(email, password);
+  };
 
   return (
     <>
@@ -82,6 +88,10 @@ export const LoginPage: React.VFC = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -93,6 +103,10 @@ export const LoginPage: React.VFC = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value);
+              }}
             />
             <Button
               type="submit"
@@ -100,6 +114,13 @@ export const LoginPage: React.VFC = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={async () => {
+                try {
+                  await signInEmail();
+                } catch (err) {
+                  alert(err.message);
+                }
+              }}
             >
               ログイン
             </Button>

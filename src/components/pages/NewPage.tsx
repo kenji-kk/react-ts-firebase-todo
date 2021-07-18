@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import { Link as RLink } from "react-router-dom";
+import { auth, db } from "../../firebase";
+import firebase from "firebase/app";
 
 function Copyright() {
   return (
@@ -58,6 +60,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const NewPage: React.VfC = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signUpEmail = async () => {
+    const authUser = await auth.createUserWithEmailAndPassword(email, password);
+  };
 
   return (
     <>
@@ -82,6 +90,10 @@ export const NewPage: React.VfC = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setEmail(e.target.value);
+              }}
             />
             <TextField
               variant="outlined"
@@ -93,6 +105,10 @@ export const NewPage: React.VfC = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value);
+              }}
             />
             <Button
               type="button"
@@ -100,6 +116,13 @@ export const NewPage: React.VfC = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={async () => {
+                try {
+                  await signUpEmail();
+                } catch (err) {
+                  alert(err.message);
+                }
+              }}
             >
               アカウント作成
             </Button>
