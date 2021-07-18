@@ -5,13 +5,14 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { Link as RLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 
 function Copyright() {
   return (
@@ -48,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     fontSize: "3vw",
     fontWeight: "bold",
+  },
+  link: {
+    textDecoration: "none",
+    color: "blue",
   },
 }));
 
@@ -100,9 +105,9 @@ export const LoginPage: React.VFC = () => {
             </Button>
             <Grid container>
               <Grid item>
-                <Link variant="body2">
-                  {"まだアカウントをお持ちでない方はこちら"}
-                </Link>
+                <RLink className={classes.link} to={"/"}>
+                  まだアカウントをお持ちでない方はこちら
+                </RLink>
               </Grid>
             </Grid>
           </form>
