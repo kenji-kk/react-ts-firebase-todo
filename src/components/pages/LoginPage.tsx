@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const NewPage: React.VfC = () => {
+export const LoginPage: React.VFC = () => {
   const classes = useStyles();
 
   return (
@@ -64,7 +64,7 @@ export const NewPage: React.VfC = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            アカウント作成フォーム
+            ログインフォーム
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -90,18 +90,18 @@ export const NewPage: React.VfC = () => {
               autoComplete="current-password"
             />
             <Button
-              type="button"
+              type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
             >
-              アカウント作成
+              ログイン
             </Button>
             <Grid container>
               <Grid item>
                 <Link variant="body2">
-                  {"すでにアカウントをお持ちの方はこちら"}
+                  {"まだアカウントをお持ちでない方はこちら"}
                 </Link>
               </Grid>
             </Grid>
