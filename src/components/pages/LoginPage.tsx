@@ -109,7 +109,7 @@ export const LoginPage: React.FC = () => {
               }}
             />
             <Button
-              type="submit"
+              type="button"
               fullWidth
               variant="contained"
               color="primary"
