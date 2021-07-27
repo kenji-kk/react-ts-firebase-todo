@@ -17,7 +17,7 @@ export const App: React.FC = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged((authUser) => {
+    const unSub = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(
           login({
@@ -30,9 +30,10 @@ export const App: React.FC = () => {
       }
     });
     return () => {
-      unsub();
+      unSub();
     };
   }, [dispatch]);
+
   return (
     <>
       <Route exact path={"/"}>
