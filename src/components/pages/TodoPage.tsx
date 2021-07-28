@@ -7,12 +7,26 @@ import { useSelector, useDispatch } from "react-redux";
 export const TodoPage = () => {
   const history = useHistory();
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user.uid) {
-      history.push("/");
-    }
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(
+          login({
+            uid: authUser.uid,
+          })
+        );
+      } else {
+        dispatch(logout());
+        history.push("/");
+      }
+    });
   }, []);
+  if (!user.uid) {
+    return null;
+  }
+
   return (
     <>
       <div>aaaa</div>
