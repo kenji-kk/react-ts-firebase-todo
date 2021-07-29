@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const LoginPage: React.FC = () => {
+export const LoginPage: React.FC = memo(() => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -139,4 +139,4 @@ export const LoginPage: React.FC = () => {
       </Container>
     </>
   );
-};
+});
