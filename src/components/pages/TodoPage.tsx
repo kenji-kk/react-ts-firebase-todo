@@ -3,12 +3,22 @@ import { auth } from "../../firebase";
 import { useHistory } from "react-router-dom";
 import { selectUser, login, logout } from "../../features/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { ChangePageButtons } from "../atoms/buttons/ChangePageButtons";
+import { makeStyles } from "@material-ui/core/styles";
+import { Header } from "../organisms/Header";
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "#333333",
+    margin: 0,
+    minHeight: "100vh",
+  },
+});
 
 export const TodoPage: React.FC = memo(() => {
   const history = useHistory();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -26,8 +36,8 @@ export const TodoPage: React.FC = memo(() => {
   }
 
   return (
-    <>
-      <ChangePageButtons />
+    <div className={classes.root}>
+      <Header color={"skyblue"}>{"未完了"}</Header>
       <button
         onClick={() => {
           auth.signOut();
@@ -36,6 +46,6 @@ export const TodoPage: React.FC = memo(() => {
       >
         サインアウト
       </button>
-    </>
+    </div>
   );
 });

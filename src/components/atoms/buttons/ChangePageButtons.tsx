@@ -13,6 +13,18 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(1),
       },
     },
+    incompleteButton: {
+      "&:hover": {
+        opacity: 0.5,
+        transition: "0.3s",
+      },
+    },
+    completeButton: {
+      "&:hover": {
+        opacity: 0.5,
+        transition: "0.3s",
+      },
+    },
   })
 );
 
@@ -22,10 +34,16 @@ export const ChangePageButtons: React.FC = memo(() => {
   return (
     <div className={classes.root}>
       <ButtonGroup>
-        <Button style={{ borderColor: "skyblue", color: "skyblue" }}>
+        <Button
+          className={classes.incompleteButton}
+          style={{ borderColor: "skyblue", color: "skyblue" }}
+        >
           未完了
         </Button>
-        <Button style={{ borderColor: "#66CC33", color: "#66CC33" }}>
+        <Button
+          className={classes.completeButton}
+          style={{ borderColor: "#66CC33", color: "#66CC33" }}
+        >
           完了
         </Button>
       </ButtonGroup>
