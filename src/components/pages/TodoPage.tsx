@@ -37,7 +37,7 @@ export const TodoPage: React.FC = memo(() => {
 
   return (
     <div className={classes.root}>
-      <Header color={"skyblue"}>{"未完了"}</Header>
+      <Header color={"skyblue"}>{"未完了タスク"}</Header>
       <button
         onClick={() => {
           auth.signOut();
