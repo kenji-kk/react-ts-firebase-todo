@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { SignOutButton } from "./SignOutButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
