@@ -3,8 +3,9 @@ import { auth } from "../../firebase";
 import { useHistory } from "react-router-dom";
 import { selectUser, login, logout } from "../../features/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { ChangePageButtons } from "../atoms/buttons/ChangePageButtons";
 
-export const TodoPage: React.VFC = memo(() => {
+export const TodoPage: React.FC = memo(() => {
   const history = useHistory();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const TodoPage: React.VFC = memo(() => {
 
   return (
     <>
-      <div>aaaa</div>
+      <ChangePageButtons />
       <button
         onClick={() => {
           auth.signOut();
