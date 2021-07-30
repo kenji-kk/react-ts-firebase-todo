@@ -5,6 +5,7 @@ import { selectUser, login, logout } from "../../features/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Header } from "../organisms/Header";
+import { Route, Switch, useRouteMatch } from "react-router";
 
 const useStyles = makeStyles({
   root: {
@@ -19,6 +20,7 @@ export const TodoPage: React.FC = memo(() => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const classes = useStyles();
+  let { path, url } = useRouteMatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -37,7 +39,14 @@ export const TodoPage: React.FC = memo(() => {
 
   return (
     <div className={classes.root}>
-      <Header color={"skyblue"}>{"未完了タスク"}</Header>
+      <Switch>
+        <Route exact path={`${path}`}>
+          <Header color={"skyblue"}>{"未完了タスク"}</Header>
+        </Route>
+        <Route exact path={`${path}/complete`}>
+          <Header color={"#66CC33"}>{"完了タスク"}</Header>
+        </Route>
+      </Switch>
     </div>
   );
 });

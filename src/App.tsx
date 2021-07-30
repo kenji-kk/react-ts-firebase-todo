@@ -24,7 +24,7 @@ export const App: React.FC = () => {
             uid: authUser.uid,
           })
         );
-        history.push("/todoPage");
+        history.push("/todoPage/incomplete");
       } else {
         dispatch(logout());
       }
@@ -42,7 +42,7 @@ export const App: React.FC = () => {
       <Route exact path={"/login"}>
         <LoginPage />
       </Route>
-      <Route exact path={"/todoPage"}>
+      <Route exact path={"/todoPage/incomplete"}>
         <TodoPage />
       </Route>
     </>

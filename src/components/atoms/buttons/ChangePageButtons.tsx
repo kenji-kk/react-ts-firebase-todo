@@ -2,7 +2,8 @@ import React, { memo } from "react";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import { SignOutButton } from "./SignOutButton";
+import { useHistory } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ChangePageButtons: React.FC = memo(() => {
   const classes = useStyles();
+  const history = useHistory();
+  let { path, url } = useRouteMatch();
 
   return (
     <div className={classes.root}>
@@ -38,12 +41,18 @@ export const ChangePageButtons: React.FC = memo(() => {
         <Button
           className={classes.incompleteButton}
           style={{ borderColor: "skyblue", color: "skyblue" }}
+          onClick={() => {
+            history.push(`${url}`);
+          }}
         >
           未完了
         </Button>
         <Button
           className={classes.completeButton}
           style={{ borderColor: "#66CC33", color: "#66CC33" }}
+          onClick={() => {
+            history.push(`${url}/complete`);
+          }}
         >
           完了
         </Button>
