@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export const ChangePageButtons: React.FC = memo(() => {
   const classes = useStyles();
   const history = useHistory();
-  let { path, url } = useRouteMatch();
 
   return (
     <div className={classes.root}>
@@ -42,7 +41,7 @@ export const ChangePageButtons: React.FC = memo(() => {
           className={classes.incompleteButton}
           style={{ borderColor: "skyblue", color: "skyblue" }}
           onClick={() => {
-            history.push(`${url}`);
+            history.push("/todoPage/incomplete");
           }}
         >
           未完了
@@ -51,7 +50,7 @@ export const ChangePageButtons: React.FC = memo(() => {
           className={classes.completeButton}
           style={{ borderColor: "#66CC33", color: "#66CC33" }}
           onClick={() => {
-            history.push(`${url}/complete`);
+            history.push("/todoPage/complete");
           }}
         >
           完了

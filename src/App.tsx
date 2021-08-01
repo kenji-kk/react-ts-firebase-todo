@@ -42,9 +42,7 @@ export const App: React.FC = () => {
       <Route exact path={"/login"}>
         <LoginPage />
       </Route>
-      <Route exact path={"/todoPage/incomplete"}>
-        <TodoPage />
-      </Route>
+      <TodoPage />
     </>
   );
 };

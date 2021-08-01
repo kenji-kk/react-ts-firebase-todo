@@ -39,14 +39,12 @@ export const TodoPage: React.FC = memo(() => {
 
   return (
     <div className={classes.root}>
-      <Switch>
-        <Route exact path={`${path}`}>
-          <Header color={"skyblue"}>{"未完了タスク"}</Header>
-        </Route>
-        <Route exact path={`${path}/complete`}>
-          <Header color={"#66CC33"}>{"完了タスク"}</Header>
-        </Route>
-      </Switch>
+      <Route exact path={"/todoPage/incomplete"}>
+        <Header color={"skyblue"}>{"未完了タスク"}</Header>
+      </Route>
+      <Route exact path={"/todoPage/complete"}>
+        <Header color={"#66CC33"}>{"完了タスク"}</Header>
+      </Route>
     </div>
   );
 });
