@@ -6,8 +6,30 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles({
+  button: {
+    borderColor: "skyblue",
+    borderWidth: "5px",
+    position: "fixed",
+    right: "10vw",
+    bottom: "10vw",
+    "&:hover": {
+      opacity: 0.5,
+      transform: "scale(1.5)",
+      transition: "0.3s",
+    },
+  },
+  icon: {
+    fontSize: "5vw",
+    color: "skyblue",
+  },
+});
 
 export const InputDialog: React.FC = memo(() => {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,8 +42,12 @@ export const InputDialog: React.FC = memo(() => {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+        className={classes.button}
+      >
+        <AddCircleIcon className={classes.icon} />
       </Button>
       <Dialog
         open={open}
