@@ -1,11 +1,11 @@
 import React, { useEffect, memo } from "react";
 import { auth } from "../../firebase";
 import { useHistory } from "react-router-dom";
-import { selectUser, login, logout } from "../../features/userSlice";
+import { selectUser, logout } from "../../features/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Header } from "../organisms/Header";
-import { Route, Switch, useRouteMatch } from "react-router";
+import { Route } from "react-router";
 
 const useStyles = makeStyles({
   root: {
@@ -20,7 +20,6 @@ export const TodoPage: React.FC = memo(() => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const classes = useStyles();
-  let { path, url } = useRouteMatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {

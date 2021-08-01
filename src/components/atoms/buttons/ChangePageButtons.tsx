@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
-import { Route, Switch, useRouteMatch } from "react-router";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
