@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route } from "react-router";
 import { auth } from "./firebase";
@@ -42,9 +41,7 @@ export const App: React.FC = () => {
       <Route exact path={"/login"}>
         <LoginPage />
       </Route>
-      <Route exact path={"/todoPage/incomplete"}>
-        <TodoPage />
-      </Route>
+      <TodoPage />
     </>
   );
 };
