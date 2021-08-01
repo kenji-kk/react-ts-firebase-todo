@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Header } from "../organisms/Header";
 import { Route } from "react-router";
-import { IncompletePage } from "./IncompletePage";
+import { InputDialog } from "../atoms/dialogs/InputDialog";
+import { IncompleteTasks } from "../molecules/IncompleteTasks";
 
 const useStyles = makeStyles({
   root: {
@@ -41,7 +42,8 @@ export const TodoPage: React.FC = memo(() => {
     <div className={classes.root}>
       <Route exact path={"/todoPage/incomplete"}>
         <Header color={"skyblue"}>{"未完了タスク"}</Header>
-        <IncompletePage />
+        <IncompleteTasks />
+        <InputDialog />
       </Route>
       <Route exact path={"/todoPage/complete"}>
         <Header color={"#66CC33"}>{"完了タスク"}</Header>
