@@ -5,6 +5,11 @@ import { SignOutButton } from "../atoms/buttons/SignOutButton";
 
 const useStyles = makeStyles({
   root: {
+    position: "fixed",
+    top: 0,
+    width: "100vw",
+  },
+  inner: {
     position: "relative",
   },
   title: {
@@ -15,6 +20,9 @@ const useStyles = makeStyles({
     position: "absolute",
     right: 0,
     bottom: 0,
+  },
+  dummy: {
+    height: "10vw",
   },
 });
 
@@ -28,14 +36,19 @@ export const Header: React.FC<PROPS> = memo((props) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <h1 className={classes.title} style={{ color }}>
-        {children}
-      </h1>
-      <ChangePageButtons />
-      <div className={classes.signOut}>
-        <SignOutButton />
+    <>
+      <div className={classes.root}>
+        <div className={classes.inner}>
+          <h1 className={classes.title} style={{ color }}>
+            {children}
+          </h1>
+          <ChangePageButtons />
+          <div className={classes.signOut}>
+            <SignOutButton />
+          </div>
+        </div>
       </div>
-    </div>
+      <div className={classes.dummy}></div>
+    </>
   );
 });
