@@ -15,12 +15,16 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     incompleteButton: {
+      width: "6vw",
+      fontSize: "1vw",
       "&:hover": {
         opacity: 0.5,
         transition: "0.3s",
       },
     },
     completeButton: {
+      width: "6vw",
+      fontSize: "1vw",
       "&:hover": {
         opacity: 0.5,
         transition: "0.3s",

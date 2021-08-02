@@ -1,15 +1,31 @@
 import React, { memo, useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { db } from "../../firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
-import { IncompleteTasksCard } from "./IncompleteTaskCard";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  root: {
-    height: "300vw",
-  },
-});
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      width: "50vw",
+      backgroundColor: "skyblue",
+      margin: "0 auto",
+      padding: "1vw",
+      borderBottom: "1px solid #333333",
+      "&:hover": {
+        opacity: 0.9,
+        transition: "0.3s",
+      },
+    },
+    text: {
+      fontSize: "1.8vw",
+      width: "30vw",
+      overflowWrap: "break-word",
+      display: "inline-block",
+      verticalAlign: "middle",
+    },
+  })
+);
 
 export const IncompleteTasks: React.FC = memo(() => {
   const classes = useStyles();
@@ -35,12 +51,14 @@ export const IncompleteTasks: React.FC = memo(() => {
   }, [user]);
 
   return (
-    <div className={classes.root}>
-      {tasks.map((task) => (
-        <>
-          <IncompleteTasksCard />
-        </>
-      ))}
-    </div>
+    <>
+      {tasks.map((task, index) => {
+        return (
+          <div className={classes.root}>
+            <div className={classes.text}>{task.title}</div>
+          </div>
+        );
+      })}
+    </>
   );
 });
