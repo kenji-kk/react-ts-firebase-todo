@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -56,9 +56,6 @@ export const InputDialog: React.FC = memo(() => {
     setTitle("");
     setContent("");
   };
-
-  console.log(title);
-  console.log(content);
 
   return (
     <div>
