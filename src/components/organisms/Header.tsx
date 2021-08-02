@@ -15,14 +15,16 @@ const useStyles = makeStyles({
   title: {
     textAlign: "center",
     margin: 0,
+    fontSize: "2vw",
+    paddingTop: "1vw",
   },
   signOut: {
     position: "absolute",
-    right: 0,
+    right: "1vw",
     bottom: 0,
   },
   dummy: {
-    height: "10vw",
+    height: "120px",
   },
 });
 
