@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { db } from "../../firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
+import { IncompleteTasksCard } from "./IncompleteTaskCard";
 
 const useStyles = makeStyles({
   root: {
@@ -37,8 +38,7 @@ export const IncompleteTasks: React.FC = memo(() => {
     <div className={classes.root}>
       {tasks.map((task) => (
         <>
-          <p>{task.title}</p>
-          <p>{task.content}</p>
+          <IncompleteTasksCard />
         </>
       ))}
     </div>
