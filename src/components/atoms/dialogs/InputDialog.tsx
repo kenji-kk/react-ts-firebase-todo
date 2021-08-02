@@ -49,18 +49,16 @@ export const InputDialog: React.FC = memo(() => {
   };
 
   const taskSave = () => {
-    db.collection("users").doc(user.uid).set({});
     db.collection("users").doc(user.uid).collection("incompleteTasks").add({
-      title: title,
-      content: content,
+      title,
+      content,
     });
-  };
-  useEffect(() => {
     setTitle("");
     setContent("");
-    console.log(title);
-    console.log(content);
-  }, []);
+  };
+
+  console.log(title);
+  console.log(content);
 
   return (
     <div>
@@ -84,7 +82,7 @@ export const InputDialog: React.FC = memo(() => {
             fullWidth
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setTitle(e.target.velue);
+              setTitle(e.target.value);
             }}
           />
         </DialogContent>
@@ -97,7 +95,7 @@ export const InputDialog: React.FC = memo(() => {
             multiline
             value={content}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setContent(e.target.velue);
+              setContent(e.target.value);
             }}
           />
         </DialogContent>
@@ -111,6 +109,7 @@ export const InputDialog: React.FC = memo(() => {
               handleClose();
             }}
             color="primary"
+            disabled={title === "" || content === ""}
           >
             登録
           </Button>
