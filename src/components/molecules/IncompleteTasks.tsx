@@ -40,6 +40,7 @@ export const IncompleteTasks: React.FC = memo(() => {
       .onSnapshot((snapshot) => {
         setTasks(
           snapshot.docs.map((doc) => ({
+            did: doc.id,
             title: doc.data().title,
             content: doc.data().content,
           }))
