@@ -3,6 +3,7 @@ import { db } from "../../firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { ToCompleteButton } from "../atoms/buttons/ToCompleteButton";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -40,6 +41,7 @@ export const IncompleteTasks: React.FC = memo(() => {
       .onSnapshot((snapshot) => {
         setTasks(
           snapshot.docs.map((doc) => ({
+            did: doc.id,
             title: doc.data().title,
             content: doc.data().content,
           }))
@@ -54,8 +56,16 @@ export const IncompleteTasks: React.FC = memo(() => {
     <>
       {tasks.map((task, index) => {
         return (
-          <div className={classes.root}>
-            <div className={classes.text}>{task.title}</div>
+          <div key={index} className={classes.root}>
+            <div className={classes.text}>
+              {task.title}
+              <ToCompleteButton
+                did={task.did}
+                uid={user.uid}
+                title={task.title}
+                content={task.content}
+              />
+            </div>
           </div>
         );
       })}
