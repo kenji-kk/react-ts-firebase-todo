@@ -8,6 +8,7 @@ import { Header } from "../organisms/Header";
 import { Route } from "react-router";
 import { InputDialog } from "../atoms/dialogs/InputDialog";
 import { IncompleteTasks } from "../molecules/IncompleteTasks";
+import { CompleteTasks } from "../molecules/CompleteTasks";
 
 const useStyles = makeStyles({
   root: {
@@ -47,6 +48,7 @@ export const TodoPage: React.FC = memo(() => {
       </Route>
       <Route exact path={"/todoPage/complete"}>
         <Header color={"#66CC33"}>{"完了タスク"}</Header>
+        <CompleteTasks />
       </Route>
     </div>
   );
