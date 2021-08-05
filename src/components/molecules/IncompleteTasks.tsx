@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { ToCompleteButton } from "../atoms/buttons/ToCompleteButton";
+import { DetailDialog } from "../atoms/dialogs/DetailDialog";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -20,10 +21,10 @@ const useStyles = makeStyles(() =>
     },
     text: {
       fontSize: "1.8vw",
-      width: "30vw",
-      overflowWrap: "break-word",
+      width: "25vw",
       display: "inline-block",
       verticalAlign: "middle",
+      wordBreak: "break-all",
     },
   })
 );
@@ -57,15 +58,19 @@ export const IncompleteTasks: React.FC = memo(() => {
       {tasks.map((task, index) => {
         return (
           <div key={index} className={classes.root}>
-            <div className={classes.text}>
-              {task.title}
-              <ToCompleteButton
-                did={task.did}
-                uid={user.uid}
-                title={task.title}
-                content={task.content}
-              />
-            </div>
+            <div className={classes.text}>{task.title}</div>
+            <ToCompleteButton
+              did={task.did}
+              uid={user.uid}
+              title={task.title}
+              content={task.content}
+            />
+            <DetailDialog
+              did={task.did}
+              uid={user.uid}
+              originTitle={task.title}
+              originContent={task.content}
+            />
           </div>
         );
       })}
