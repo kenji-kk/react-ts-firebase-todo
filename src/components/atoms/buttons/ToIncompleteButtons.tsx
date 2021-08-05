@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     button: {
       margin: theme.spacing(1),
-      backgroundColor: "forestgreen",
+      backgroundColor: "royalblue",
       fontWeight: "bold",
       "&:hover": {
-        backgroundColor: "#008000",
+        backgroundColor: "blue",
         transition: "0.3s",
       },
     },
@@ -25,17 +25,17 @@ interface Props {
   content: string;
 }
 
-export const ToCompleteButton: React.FC<Props> = memo(
+export const ToIncompleteButton: React.FC<Props> = memo(
   ({ uid, did, title, content }) => {
     const classes = useStyles();
     const toComplete = () => {
-      db.collection("users").doc(uid).collection("completeTasks").add({
+      db.collection("users").doc(uid).collection("incompleteTasks").add({
         title,
         content,
       });
       db.collection("users")
         .doc(uid)
-        .collection("incompleteTasks")
+        .collection("completeTasks")
         .doc(did)
         .delete();
     };
