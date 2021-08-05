@@ -99,6 +99,8 @@ export const DetailDialog: React.FC<Props> = memo(
               onClick={() => {
                 taskEdit();
                 handleClose();
+                setTitle(title);
+                setContent(content);
               }}
               color="primary"
               disabled={title === "" || content === ""}
