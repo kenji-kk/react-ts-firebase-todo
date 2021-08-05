@@ -50,7 +50,7 @@ export const ToIncompleteButton: React.FC<Props> = memo(
           toComplete();
         }}
       >
-        完了
+        未完了
       </Button>
     );
   }
