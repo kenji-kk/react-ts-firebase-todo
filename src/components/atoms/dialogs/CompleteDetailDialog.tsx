@@ -23,7 +23,7 @@ interface Props {
   originContent: string;
 }
 
-export const DetailDialog: React.FC<Props> = memo(
+export const CompleteDetailDialog: React.FC<Props> = memo(
   ({ uid, did, originTitle, originContent }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -40,17 +40,6 @@ export const DetailDialog: React.FC<Props> = memo(
       setOpen(false);
     };
 
-    const taskEdit = () => {
-      db.collection("users")
-        .doc(uid)
-        .collection("incompleteTasks")
-        .doc(did)
-        .set({
-          title,
-          content,
-        });
-    };
-
     return (
       <>
         <Button
@@ -59,22 +48,25 @@ export const DetailDialog: React.FC<Props> = memo(
           className={classes.button}
           endIcon={<SettingsApplicationsIcon />}
         >
-          詳細・編集
+          詳細
         </Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle id="form-dialog-title" className={classes.dialogTitle}>
-            未完了TODO編集フォーム
+            完了TODO詳細フォーム
           </DialogTitle>
           <DialogContent>
             <TextField
               autoFocus
               margin="dense"
               id="name"
-              label="タスク名を編集してください"
+              label="タスク名です"
               fullWidth
               value={title}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setTitle(e.target.value);
+              }}
+              InputProps={{
+                readOnly: true,
               }}
             />
           </DialogContent>
@@ -82,30 +74,21 @@ export const DetailDialog: React.FC<Props> = memo(
             <TextField
               margin="dense"
               id="name"
-              label="タスク内容を編集してください"
+              label="タスク内容です"
               fullWidth
               multiline
               value={content}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setContent(e.target.value);
               }}
+              InputProps={{
+                readOnly: true,
+              }}
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">
-              キャンセル
-            </Button>
-            <Button
-              onClick={() => {
-                taskEdit();
-                handleClose();
-                setTitle(title);
-                setContent(content);
-              }}
-              color="primary"
-              disabled={title === "" || content === ""}
-            >
-              編集
+              閉じる
             </Button>
           </DialogActions>
         </Dialog>

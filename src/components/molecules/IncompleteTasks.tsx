@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { ToCompleteButton } from "../atoms/buttons/ToCompleteButton";
-import { DetailDialog } from "../atoms/dialogs/DetailDialog";
+import { IncompleteDetailDialog } from "../atoms/dialogs/IncompleteDetailDialog";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -65,7 +65,7 @@ export const IncompleteTasks: React.FC = memo(() => {
               title={task.title}
               content={task.content}
             />
-            <DetailDialog
+            <IncompleteDetailDialog
               did={task.did}
               uid={user.uid}
               originTitle={task.title}
