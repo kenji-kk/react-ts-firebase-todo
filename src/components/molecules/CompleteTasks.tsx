@@ -5,6 +5,7 @@ import { selectUser } from "../../features/userSlice";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { ToCompleteButton } from "../atoms/buttons/ToCompleteButton";
 import { ToIncompleteButton } from "../atoms/buttons/ToIncompleteButtons";
+import { CompleteDetailDialog } from "../atoms/dialogs/CompleteDetailDialog";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -58,15 +59,18 @@ export const CompleteTasks: React.FC = memo(() => {
       {tasks.map((task, index) => {
         return (
           <div key={index} className={classes.root}>
-            <div className={classes.text}>
-              {task.title}
-              <ToIncompleteButton
-                did={task.did}
-                uid={user.uid}
-                title={task.title}
-                content={task.content}
-              />
-            </div>
+            <div className={classes.text}>{task.title}</div>
+            <ToIncompleteButton
+              did={task.did}
+              uid={user.uid}
+              title={task.title}
+              content={task.content}
+            />
+            <CompleteDetailDialog 
+              did={task.did}
+              uid={user.uid}
+              originTitle={task.title}
+              originContent={task.content}/>
           </div>
         );
       })}
