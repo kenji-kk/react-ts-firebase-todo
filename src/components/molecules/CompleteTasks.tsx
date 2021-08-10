@@ -22,7 +22,7 @@ const useStyles = makeStyles(() =>
     },
     text: {
       fontSize: "1.8vw",
-      width: "30vw",
+      width: "25vw",
       overflowWrap: "break-word",
       display: "inline-block",
       verticalAlign: "middle",

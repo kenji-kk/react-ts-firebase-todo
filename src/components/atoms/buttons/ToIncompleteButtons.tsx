@@ -10,10 +10,15 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       backgroundColor: "royalblue",
       fontWeight: "bold",
+      width: "8vw",
+      fontSize: "1.2vw",
       "&:hover": {
         backgroundColor: "blue",
         transition: "0.3s",
       },
+      icon: {
+        fontSize: "1.7vw",
+      }
     },
   })
 );
@@ -45,12 +50,11 @@ export const ToIncompleteButton: React.FC<Props> = memo(
         variant="contained"
         color="primary"
         className={classes.button}
-        endIcon={<Icon>send</Icon>}
         onClick={() => {
           toComplete();
         }}
       >
-        未完了
+        未完了　<Icon>send</Icon>
       </Button>
     );
   }

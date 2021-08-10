@@ -10,7 +10,18 @@ import { db } from "../../../firebase";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 
 const useStyles = makeStyles({
-  button: {},
+  button: {
+    fontWeight: "bold",
+    width: "10vw",
+    fontSize: "1.2vw",
+    "&:hover": {
+      backgroundColor: "darkgray",
+      transition: "0.3s",
+    },
+  },
+  icon: {
+    fontSize: "2vw",
+  },
   dialogTitle: {
     textAlign: "center",
   },
@@ -46,9 +57,8 @@ export const CompleteDetailDialog: React.FC<Props> = memo(
           variant="contained"
           onClick={handleClickOpen}
           className={classes.button}
-          endIcon={<SettingsApplicationsIcon />}
         >
-          詳細
+          詳細　<SettingsApplicationsIcon className={classes.icon}/>
         </Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle id="form-dialog-title" className={classes.dialogTitle}>
