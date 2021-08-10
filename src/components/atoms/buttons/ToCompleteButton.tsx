@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "8vw",
       fontSize: "1.2vw",
       "&:hover": {
-        backgroundColor: "#008000",
+        backgroundColor: "#006400",
         transition: "0.3s",
       },
     },
