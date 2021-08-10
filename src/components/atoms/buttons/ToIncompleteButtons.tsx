@@ -10,16 +10,16 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       backgroundColor: "royalblue",
       fontWeight: "bold",
-      width: "8vw",
+      width: "10vw",
       fontSize: "1.2vw",
       "&:hover": {
         backgroundColor: "blue",
         transition: "0.3s",
       },
-      icon: {
-        fontSize: "1.7vw",
-      }
     },
+    icon: {
+      fontSize: "1.7vw",
+    }
   })
 );
 
@@ -54,7 +54,7 @@ export const ToIncompleteButton: React.FC<Props> = memo(
           toComplete();
         }}
       >
-        未完了　<Icon>send</Icon>
+        未完了　<Icon className={classes.icon}>send</Icon>
       </Button>
     );
   }
