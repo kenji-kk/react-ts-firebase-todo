@@ -14,6 +14,10 @@ const useStyles = makeStyles({
       fontWeight: "bold",
       width: "12vw",
       fontSize: "1.2vw",
+      "&:hover": {
+        backgroundColor: "darkgray",
+        transition: "0.3s",
+      },
   },
   icon: {
     fontSize: "2vw",
