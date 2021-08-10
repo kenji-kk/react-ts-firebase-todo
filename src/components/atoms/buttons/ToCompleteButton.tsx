@@ -10,10 +10,16 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       backgroundColor: "forestgreen",
       fontWeight: "bold",
+      width: "8vw",
+      fontSize: "1.2vw",
       "&:hover": {
-        backgroundColor: "#008000",
+        backgroundColor: "#006400",
         transition: "0.3s",
       },
+    },
+    icon: {
+      fontSize: "1.7vw",
+      
     },
   })
 );
@@ -41,17 +47,19 @@ export const ToCompleteButton: React.FC<Props> = memo(
     };
 
     return (
+      <>
       <Button
         variant="contained"
         color="primary"
         className={classes.button}
-        endIcon={<Icon>send</Icon>}
         onClick={() => {
           toComplete();
         }}
       >
-        完了
+        完了　<Icon className={classes.icon}>send</Icon>
       </Button>
+      
+      </>
     );
   }
 );

@@ -15,19 +15,25 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     incompleteButton: {
-      width: "6vw",
+      width: "8vw",
       fontSize: "1vw",
+      borderColor: "skyblue", 
+      color: "skyblue" ,
       "&:hover": {
-        opacity: 0.5,
+        backgroundColor: "skyblue",
         transition: "0.3s",
+        color: "white",
       },
     },
     completeButton: {
-      width: "6vw",
+      width: "8vw",
       fontSize: "1vw",
+      borderColor: "#66CC33", 
+      color: "#66CC33",
       "&:hover": {
-        opacity: 0.5,
+        backgroundColor: "#66CC33",
         transition: "0.3s",
+        color: "white",
       },
     },
   })
@@ -42,7 +48,6 @@ export const ChangePageButtons: React.FC = memo(() => {
       <ButtonGroup>
         <Button
           className={classes.incompleteButton}
-          style={{ borderColor: "skyblue", color: "skyblue" }}
           onClick={() => {
             history.push("/todoPage/incomplete");
           }}
@@ -51,7 +56,6 @@ export const ChangePageButtons: React.FC = memo(() => {
         </Button>
         <Button
           className={classes.completeButton}
-          style={{ borderColor: "#66CC33", color: "#66CC33" }}
           onClick={() => {
             history.push("/todoPage/complete");
           }}
