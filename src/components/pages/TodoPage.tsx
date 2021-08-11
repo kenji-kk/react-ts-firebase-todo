@@ -44,7 +44,6 @@ export const TodoPage: React.FC = memo(() => {
       <Route exact path={"/todoPage/incomplete"}>
         <Header color={"skyblue"}>{"未完了タスク"}</Header>
         <IncompleteTasks />
-        <InputDialog />
       </Route>
       <Route exact path={"/todoPage/complete"}>
         <Header color={"#66CC33"}>{"完了タスク"}</Header>
