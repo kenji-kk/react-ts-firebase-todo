@@ -58,24 +58,24 @@ export const IncompleteTasks: React.FC = memo(() => {
     <>
       {tasks.map((task, index) => {
         return (
-            <div key={index} className={classes.root}>
-              <div className={classes.text}>{task.title}</div>
-              <ToCompleteButton
-                did={task.did}
-                uid={user.uid}
-                title={task.title}
-                content={task.content}
-              />
-              <IncompleteDetailDialog
-                did={task.did}
-                uid={user.uid}
-                originTitle={task.title}
-                originContent={task.content}
-              />
-            </div>
+          <div key={index} className={classes.root}>
+            <div className={classes.text}>{task.title}</div>
+            <ToCompleteButton
+              did={task.did}
+              uid={user.uid}
+              title={task.title}
+              content={task.content}
+            />
+            <IncompleteDetailDialog
+              did={task.did}
+              uid={user.uid}
+              originTitle={task.title}
+              originContent={task.content}
+            />
+          </div>
         );
       })}
-       <InputDialog/>
+      <InputDialog />
     </>
   );
 });

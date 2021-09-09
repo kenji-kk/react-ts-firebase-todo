@@ -11,13 +11,13 @@ import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 
 const useStyles = makeStyles({
   button: {
-      fontWeight: "bold",
-      width: "12vw",
-      fontSize: "1.2vw",
-      "&:hover": {
-        backgroundColor: "darkgray",
-        transition: "0.3s",
-      },
+    fontWeight: "bold",
+    width: "12vw",
+    fontSize: "1.2vw",
+    "&:hover": {
+      backgroundColor: "darkgray",
+      transition: "0.3s",
+    },
   },
   icon: {
     fontSize: "2vw",
@@ -43,11 +43,11 @@ export const IncompleteDetailDialog: React.FC<Props> = memo(
 
     const handleClickOpen = () => {
       setOpen(true);
+      setTitle(originTitle);
+      setContent(originContent);
     };
 
     const handleClose = () => {
-      setTitle(originTitle);
-      setContent(originContent);
       setOpen(false);
     };
 
@@ -69,7 +69,8 @@ export const IncompleteDetailDialog: React.FC<Props> = memo(
           onClick={handleClickOpen}
           className={classes.button}
         >
-          詳細・編集　<SettingsApplicationsIcon className={classes.icon}/>
+          詳細・編集　
+          <SettingsApplicationsIcon className={classes.icon} />
         </Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle id="form-dialog-title" className={classes.dialogTitle}>
